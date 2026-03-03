@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Busca de Produtos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .search-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .product h3 {
+            margin: 0 0 10px 0;
+        }
+
+        .price {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Buscar Produtos</h2>
+
+<div class="search-box">
+    <input type="text" id="searchInput" placeholder="Digite o nome do produto..." onkeyup="searchProduct()">
+</div>
+
+<div class="products" id="productList">
+    <div class="product">
+        <h3>Notebook Dell</h3>
+        <p class="price">R$ 3.500</p>
+    </div>
+    <div class="product">
+        <h3>Mouse Gamer</h3>
+        <p class="price">R$ 120</p>
+    </div>
+    <div class="product">
+        <h3>Teclado Mecânico</h3>
+        <p class="price">R$ 250</p>
+    </div>
+    <div class="product">
+        <h3>Monitor 24"</h3>
+        <p class="price">R$ 900</p>
+    </div>
+</div>
+
+<script>
+function searchProduct() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let products = document.getElementsByClassName("product");
+
+    for (let i = 0; i < products.length; i++) {
+        let title = products[i].getElementsByTagName("h3")[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+            products[i].style.display = "block";
+        } else {
+            products[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+</body>
+</html>
